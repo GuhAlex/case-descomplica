@@ -1,0 +1,17 @@
+grafana:
+  enabled: true
+  adminPassword: prom-operator
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+    labels: {}
+    hosts:
+      - grafana.descomplica.com
+alertmanager:
+  enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - alertmanager.descomplica.com

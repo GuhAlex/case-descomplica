@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ecr-secret-update
+  namespace: argocd
+spec:
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - args:
+                - -c
+                - kubectl -n argocd create secret generic aws-ecr-creds --from-literal=creds=AWS:$(cat /store/token) --dry-run=client -o yaml | kubectl replace -f -
+              command:
+                - sh
+              image: bitnami/kubectl:1.20.9
+              name: kubectl
+              volumeMounts:
+                - mountPath: /store
+                  name: store
+          initContainers:
+            - args:
+                - -c
+                - aws ecr get-login-password --region us-east-1 > /store/token
+              command:
+                - sh
+              image: amazon/aws-cli:2.2.20
+              name: get-login-password
+              volumeMounts:
+                - mountPath: /store
+                  name: store
+          restartPolicy: OnFailure
+          serviceAccountName: ecr-secret-udpater
+          volumes:
+            - emptyDir:
+                medium: Memory
+              name: store
+      ttlSecondsAfterFinished: 100
+  schedule: '0 */3 * * *'

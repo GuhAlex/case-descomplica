@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ecr-secret-udpater
+  namespace: argocd
+rules:
+  - apiGroups: ["*"]
+    resources: ["secrets"]
+    verbs: ["list", "update", "delete", "create"]

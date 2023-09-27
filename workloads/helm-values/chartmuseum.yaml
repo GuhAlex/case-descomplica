@@ -1,0 +1,12 @@
+env:
+  open:
+    DISABLE_API: false
+persistence:
+  enabled: true
+ingress:
+  enabled: true
+  pathType: "ImplementationSpecific"
+  ingressClassName: nginx
+  hosts:
+    - name: chartmuseum.descomplica.com
+      path: /

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: goapp
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: goapp=xxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/goapp
+    argocd-image-updater.argoproj.io/goapp.update-strategy: latest
+    argocd-image-updater.argoproj.io/goapp.helm.image-name: image.repository
+    argocd-image-updater.argoproj.io/goapp.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/repo-2221022477
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+  destination:
+    name: in-cluster
+    namespace: default
+  project: default
+  source:
+    chart: goapp
+    repoURL: http://chartmuseum.chartmuseum.svc.cluster.local:8080
+    targetRevision: 1.3.0
