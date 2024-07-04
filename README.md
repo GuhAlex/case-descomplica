@@ -1,7 +1,7 @@
-# Case descomplica
+# Desafio Técnico – DevOps
 
 ## Overview
-Documento com todas as etapas para criação do ambiente de infraestrutura para aplicação DescoShop.
+Documento com todas as etapas para criação do ambiente de infraestrutura.
 
 > #### Obs:
 Com o intuito de deixar a leitura e o processo de implantação mais dinâmico e fluido, este REAME.md contém uma serie de links (para as documentações oficiais) de possiveis termos técnicos que possam gerar dúvidas.  
@@ -28,7 +28,7 @@ Descrição de cada diretório do projeto.
 Contém os arquivos terraform necessários para a implantação do cluster EKS, incluíndo a sua devida VPC.
 
 ##### workloads/
-Contém os arquivos terraform com as declarações de todos os [workloads](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-workloads) necessários para o ambiente do DescoShop:
+Contém os arquivos terraform com as declarações de todos os [workloads](https://kubernetes.io/docs/reference/glossary/?fundamental=true#term-workloads) necessários para o ambiente:
 
 | <center>Workload | <center>Função   |
 | :---:   | :--------: |
