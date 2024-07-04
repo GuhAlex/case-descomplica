@@ -6,7 +6,7 @@ Documento com todas as etapas para criação do ambiente de infraestrutura.
 > #### Obs:
 Com o intuito de deixar a leitura e o processo de implantação mais dinâmico e fluido, este REAME.md contém uma serie de links (para as documentações oficiais) de possiveis termos técnicos que possam gerar dúvidas.  
 
-As etapas do processo de implantação do ambiente são dividas em diretórios separados:
+As etapas do processo de implantação do ambiente são divididas em diretórios separados:
 - eks/
 - workloads/
 - frontend/
